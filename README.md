@@ -9,7 +9,7 @@ Aplicación web full stack donde las empresas fluviales registran sus salidas de
 
 ## Integrantes
 
-- Maycol j. lozano Yuimachi
+- Maycol J. Lozano Yuimachi
 
 
 ## Repositorio
@@ -171,7 +171,9 @@ Las rutas también se pueden probar con Thunder Client o Postman usando las mism
 
 Los datos se guardan en `backend/src/data/salidas.json`. El archivo incluye 12 salidas de ejemplo (empresas ficticias y precios referenciales). Las salidas que se registran, editan o eliminan desde la aplicación modifican este archivo.
 
+En la versión desplegada (plan gratuito de Render), los datos registrados pueden reiniciarse a las 12 salidas originales cuando el servicio se reinicia.
+
 ## Alcance
 
-Incluye: API REST con CRUD completo, listado de destinos, filtros, validaciones y frontend en React.
-No incluye: login, pagos, venta de pasajes ni despliegue en la nube.
+Incluye: API REST con CRUD completo, listado de destinos, filtros, validaciones, frontend en React y despliegue en línea (Render para el backend y Vercel para el frontend).
+No incluye: login, pagos ni venta de pasajes.
