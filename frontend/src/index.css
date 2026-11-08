@@ -574,3 +574,17 @@ body {
     transform: none;
   }
 }
+/* Panel translúcido detrás de las tarjetas */
+.resultados {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radio);
+  padding: 16px;
+}
+
+@media (max-width: 480px) {
+  .resultados {
+    padding: 10px;
+  }
+}
