@@ -16,6 +16,13 @@ Aplicación web full stack donde las empresas fluviales registran sus salidas de
 
 https://github.com/Maycol-Lozano/lanchaya-iquitos
 
+## Demo en línea
+
+- Frontend: https://lanchaya-iquitos-frontend.vercel.app
+- API: https://lanchaya-iquitos.onrender.com/api/salidas
+
+> La API está en el plan gratuito de Render: si lleva un rato sin uso, la primera carga puede tardar hasta un minuto.
+
 ## Requisitos
 
 - Node.js 20 o superior (incluye npm). Comprobar con `node -v` y `npm -v`.
