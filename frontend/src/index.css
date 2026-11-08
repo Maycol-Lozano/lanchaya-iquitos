@@ -476,3 +476,101 @@ body {
     flex: 1;
   }
 }
+/* ---------- Efectos al pasar el cursor (hover) ---------- */
+
+/* Tarjetas: se levantan y resaltan el borde */
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  border-color: var(--agua);
+}
+
+/* El destino y el precio cambian de color dentro de la tarjeta */
+.card-destino,
+.precio {
+  transition: color 0.25s ease;
+}
+.card:hover .card-destino {
+  color: var(--agua);
+}
+
+/* Etiquetas de tipo y cupos: crecen un poquito */
+.badge,
+.cupos {
+  transition: transform 0.2s ease;
+}
+.card:hover .badge,
+.card:hover .cupos {
+  transform: scale(1.08);
+}
+
+/* Botones: se levantan y se pintan */
+.btn,
+.btn-lupa {
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:not(:disabled):hover,
+.btn-lupa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+.card .btn-secundario:hover {
+  background: var(--verde-claro);
+  border-color: var(--verde);
+}
+.card .btn-peligro:hover {
+  background: var(--rojo);
+  color: #fff;
+}
+.topbar .btn-primario:hover {
+  background: var(--verde-claro);
+}
+
+/* Panel de filtros y sus campos */
+.filtros {
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+.filtros:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+.campo input,
+.campo select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.campo input:hover,
+.campo select:hover {
+  border-color: var(--agua);
+  box-shadow: 0 0 0 3px rgba(30, 136, 168, 0.18);
+}
+
+/* Contador de salidas */
+.resumen {
+  transition: transform 0.2s ease;
+}
+.resumen:hover {
+  transform: scale(1.04);
+}
+
+/* Si la persona prefiere menos movimiento, se desactivan las animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .btn,
+  .btn-lupa,
+  .badge,
+  .cupos,
+  .resumen {
+    transition: none;
+  }
+  .card:hover,
+  .btn:not(:disabled):hover,
+  .btn-lupa:hover,
+  .card:hover .badge,
+  .card:hover .cupos,
+  .resumen:hover {
+    transform: none;
+  }
+}

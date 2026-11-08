@@ -130,7 +130,7 @@ export default function App() {
         <div className="topbar-contenido">
           <div>
             <h1>
-              <img src="/logo.png" alt="" className="logo" /> LanchaYa Iquitos
+              <img src="/logo.jpg" alt="" className="logo" /> LanchaYa Iquitos
             </h1>
             <p className="subtitulo">Salidas fluviales desde Iquitos: horarios, puertos y precios</p>
           </div>
