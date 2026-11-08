@@ -1,0 +1,478 @@
+:root {
+  --verde: #0b5d4b;
+  --verde-claro: #e6f4ef;
+  --agua: #1e88a8;
+  --texto: #1b2a2f;
+  --gris: #5d6d73;
+  --borde: #d5e0e3;
+  --fondo: #f3f7f8;
+  --blanco: #ffffff;
+  --rojo: #c0392b;
+  --amarillo: #d99a00;
+  --radio: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Foto de fondo: guardar en frontend/public/fondo.jpg */
+  background: var(--fondo) url("/fondo.jpg") center / cover fixed no-repeat;
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* ---------- Encabezado ---------- */
+.topbar {
+  /* Paisaje con capa verde; imagen: frontend/public/fondo.jpg */
+  background:
+    linear-gradient(90deg, rgba(6, 78, 59, 0.9) 0%, rgba(11, 93, 75, 0.7) 45%, rgba(30, 136, 168, 0.35) 100%),
+    url("/fondo.jpg") center 40% / cover no-repeat;
+  color: #fff;
+  padding: 16px;
+}
+.topbar-contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.subtitulo {
+  margin: 2px 0 0;
+  opacity: 0.95;
+  font-size: 0.95rem;
+}
+.topbar h1,
+.subtitulo {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* Logo en círculo: frontend/public/logo.png */
+.logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: contain;
+  padding: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  vertical-align: middle;
+  margin-right: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 60vh;
+}
+
+/* ---------- Acciones del encabezado: buscador + lupa + registrar ---------- */
+.topbar-acciones {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.btn-lupa {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.btn-lupa:hover,
+.btn-lupa.activa {
+  background: #fff;
+}
+
+/* Buscador que se despliega junto a la lupa */
+.buscador {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+.buscador.abierto {
+  width: 260px;
+  opacity: 1;
+}
+.buscador input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--texto);
+}
+.buscador input:focus {
+  outline: 2px solid #fff;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px; /* área táctil cómoda en celular */
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primario {
+  background: #fff;
+  color: var(--verde);
+}
+.modal .btn-primario {
+  background: var(--verde);
+  color: #fff;
+}
+.btn-secundario {
+  background: var(--blanco);
+  color: var(--texto);
+  border-color: var(--borde);
+}
+.btn-peligro {
+  background: var(--blanco);
+  color: var(--rojo);
+  border-color: var(--rojo);
+}
+.modal .btn-peligro {
+  background: var(--rojo);
+  color: #fff;
+}
+.btn-chico {
+  min-height: 36px;
+  padding: 6px 12px;
+  margin-left: 12px;
+}
+
+/* ---------- Filtros (semitransparentes) ---------- */
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px;
+  margin-bottom: 16px;
+  align-items: end;
+}
+.filtros .campo select,
+.filtros .campo input {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Campos de formulario ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gris);
+}
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 1rem; /* 16px evita el zoom automático en iOS */
+  background: #fff;
+  color: var(--texto);
+  min-height: 44px;
+}
+.campo input:focus,
+.campo select:focus {
+  outline: 2px solid var(--agua);
+  border-color: var(--agua);
+}
+.campo-error input,
+.campo-error select {
+  border-color: var(--rojo);
+}
+.error-texto {
+  color: var(--rojo);
+  font-size: 0.85rem;
+}
+
+/* ---------- Estados ---------- */
+.estado {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--gris);
+  background: var(--blanco);
+  border: 1px dashed var(--borde);
+  border-radius: var(--radio);
+}
+.alerta {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.alerta-ok {
+  background: var(--verde-claro);
+  color: var(--verde);
+  border: 1px solid #b7dfd2;
+}
+.alerta-error {
+  background: #fdecea;
+  color: #8a2b21;
+  border: 1px solid #f2b8b1;
+}
+.resumen {
+  color: var(--texto);
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Tarjetas ---------- */
+.grilla {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+}
+.card-destino {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--verde);
+}
+.card-empresa {
+  margin: 2px 0 0;
+  color: var(--gris);
+  font-size: 0.9rem;
+}
+.badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge-lancha {
+  background: #e3eefb;
+  color: #1c4f94;
+}
+.badge-rapido {
+  background: #fff1d6;
+  color: #8a5a00;
+}
+.badge-deslizador {
+  background: #e8f6ea;
+  color: #1f6b34;
+}
+.card-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  margin: 0;
+}
+.card-datos dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gris);
+}
+.card-datos dd {
+  margin: 0;
+  font-weight: 600;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--borde);
+  padding-top: 12px;
+}
+.precio {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.cupos {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.cupos-verde {
+  background: #dff3e4;
+  color: #1b6b30;
+}
+.cupos-amarillo {
+  background: #fff1c9;
+  color: #7a5600;
+}
+.cupos-rojo {
+  background: #fbe1de;
+  color: #a02a1f;
+}
+.card-acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* ---------- Modal ---------- */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 30, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 10;
+}
+.modal {
+  background: #fff;
+  border-radius: var(--radio);
+  padding: 20px;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: auto 0;
+}
+.modal-chico {
+  max-width: 420px;
+}
+.modal h2 {
+  margin: 0;
+}
+.modal p {
+  margin: 0;
+}
+.fila-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.modal-acciones {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+  text-align: center;
+  color: #fff;
+  background: rgba(6, 40, 32, 0.65);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  padding: 16px;
+  margin-top: 24px;
+}
+
+/* ---------- Pantallas medianas y grandes ---------- */
+@media (min-width: 640px) {
+  .filtros {
+    grid-template-columns: repeat(3, 1fr) auto;
+  }
+  .grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 960px) {
+  .grilla {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Diseño con panel lateral de filtros ---------- */
+.layout {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .layout .filtros {
+    grid-template-columns: 1fr; /* filtros uno debajo del otro */
+    position: sticky;
+    top: 16px; /* se queda fijo al bajar */
+    margin-bottom: 0;
+  }
+  .layout .grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .contenido {
+    max-width: 1280px;
+  }
+  .layout .grilla {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 480px) {
+  .topbar-acciones {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .topbar-acciones .btn-primario {
+    flex: 1;
+  }
+  .buscador.abierto {
+    width: 100%;
+    order: -1; /* en el celular se abre arriba, a todo el ancho */
+  }
+  .modal-acciones .btn {
+    flex: 1;
+  }
+}
